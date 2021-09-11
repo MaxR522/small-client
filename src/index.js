@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/scss/bootstrap.scss';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:2222';
 
 ReactDOM.render(
   <React.StrictMode>
