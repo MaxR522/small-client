@@ -47,7 +47,7 @@ const CommentForm = ({ carId, author, token }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='mb-3'>
           <label htmlFor='content' className='form-label'>
-            Ecrire une commentaire:
+            Ecrire un commentaire:
           </label>
 
           <textarea
