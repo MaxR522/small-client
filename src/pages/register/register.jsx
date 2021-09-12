@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // validation schema
 const signupSchema = yup.object().shape({
-  fullname: yup.string().required('fullname necessaire'),
+  fullname: yup.string().required('nom et prenom necessaire'),
   email: yup
     .string()
     .email('email doit etre valide')
@@ -42,58 +42,76 @@ const Register = () => {
               token: result.data['access-token'],
             })
           );
-          setTimeout(() => (window.location.href = '/'), 3000);
+          alert('Register reussit !');
+          setTimeout(() => (window.location.href = '/'), 1000);
         } else {
           console.error(result.data);
         }
       })
       .catch((error) => {
         console.error(error.response);
+        alert(error.response.data.message);
       });
   });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor='fullname'>nom et prenom:</label>
+    <div className='container d-flex flex-column justify-content-center align-items-center'>
+      <h1 className='pt-4'>Register</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className='pt-3'>
+        <div className='mb-3'>
+          <label htmlFor='fullname' className='form-label'>
+            nom et prenom:
+          </label>
 
           <input
             type='text'
             id='fullname'
+            className='form-control'
             placeholder='votre nom et prenom'
             {...register('fullname')}
           />
 
-          <small>{errors.fullname?.message}</small>
+          <span className='form-text text-danger'>
+            {errors.fullname?.message}
+          </span>
         </div>
 
-        <div>
-          <label htmlFor='femail'>Email:</label>
+        <div className='mb-3'>
+          <label htmlFor='femail' className='form-label'>
+            Email:
+          </label>
 
           <input
             type='email'
             id='femail'
+            className='form-control'
             placeholder='votre email'
             {...register('email')}
           />
 
-          <small>{errors.email?.message}</small>
+          <small className='form-text text-danger'>
+            {errors.email?.message}
+          </small>
         </div>
-        <div>
-          <label htmlFor='fpassword'>Password:</label>
+        <div className='mb-3'>
+          <label htmlFor='fpassword' className='form-label'>
+            Password:
+          </label>
 
           <input
             type='password'
             id='fpassword'
+            className='form-control'
             placeholder='votre mot de passe'
             {...register('password')}
           />
 
-          <small>{errors.password?.message}</small>
+          <small className='form-text text-danger'>
+            {errors.password?.message}
+          </small>
         </div>
 
-        <input type='submit' value='Submit' />
+        <input type='submit' className='btn btn-primary mb-3' value='Submit' />
       </form>
     </div>
   );

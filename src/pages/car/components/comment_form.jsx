@@ -43,13 +43,16 @@ const CommentForm = ({ carId, author, token }) => {
   });
 
   return (
-    <div>
+    <div className='mt-5'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor='content'>Contenue:</label>
+        <div className='mb-3'>
+          <label htmlFor='content' className='form-label'>
+            Ecrire une commentaire:
+          </label>
 
           <textarea
             id='content'
+            className='form-control'
             placeholder='votre commentaire'
             {...register('content')}
           />
@@ -57,7 +60,11 @@ const CommentForm = ({ carId, author, token }) => {
           <small>{errors.content?.message}</small>
         </div>
 
-        <input type='submit' value='Commenter' />
+        <input
+          type='submit'
+          value='Commenter'
+          className='btn btn-primary mb-3'
+        />
       </form>
     </div>
   );

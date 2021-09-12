@@ -48,6 +48,7 @@ const CommentList = ({ carId }) => {
                 key={`${element._id}${element.author}`}
                 author={element.author}
                 content={element.content}
+                createdAt={element.createdAt}
               />
             );
           })}

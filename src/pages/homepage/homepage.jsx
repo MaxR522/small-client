@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const Homepage = () => {
   const [cars, setCars] = useState([]);
@@ -13,19 +12,29 @@ const Homepage = () => {
   }, []);
 
   return (
-    <>
+    <div className='container-fluid d-flex flex-wrap p-4'>
       {cars.map((element) => {
         return (
-          <Link
-            to={`/car/${element._id}`}
+          <div
             key={`${element.brand}${element._id}`}
+            className='card m-2'
+            style={{ width: '18rem' }}
           >
-            <h1>{element.brand}</h1>
-            <img src={element.photo} alt='car' />
-          </Link>
+            <img src={element.photo} className='card-img-top' alt='car' />
+            <div className='card-body'>
+              <h5 className='card-title'>{element.brand}</h5>
+              <p className='card-text'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
+                libero!
+              </p>
+              <a href={`/car/${element._id}`} className='btn btn-primary'>
+                Commenter
+              </a>
+            </div>
+          </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

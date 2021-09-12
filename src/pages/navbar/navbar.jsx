@@ -23,27 +23,45 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      {isConnected === false ? (
-        <ul>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-          <li>
-            <Link to='/register'>Register</Link>
-          </li>
-        </ul>
-      ) : (
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>Logout</button>
-          </li>
-        </ul>
-      )}
-    </>
+    <nav className='navbar navbar-expand navbar-dark bg-dark'>
+      <div className='container-md'>
+        {isConnected === false ? (
+          <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
+            <li className='nav-item'>
+              <Link className='nav-link text-white' to='/'>
+                Home
+              </Link>
+            </li>
+            <li className='nav-item px-4'>
+              <Link className='nav-link text-white' to='/login'>
+                Login
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='btn btn-outline-success me-2' to='/register'>
+                Register
+              </Link>
+            </li>
+          </ul>
+        ) : (
+          <ul className='navbar-nav ms-auto mb-2 mb-lg-0 '>
+            <li className='nav-item px-4'>
+              <Link className='nav-link text-white' to='/'>
+                Home
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <button
+                className='btn btn-outline-danger me-2'
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        )}
+      </div>
+    </nav>
   );
 };
 
